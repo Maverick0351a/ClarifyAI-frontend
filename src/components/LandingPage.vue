@@ -1,159 +1,107 @@
 <template>
-  <div class="bg-gray-50 min-h-screen font-sans text-gray-800">
+  <section class="min-h-screen bg-gradient-to-b from-blue-950 via-blue-900 to-blue-800 text-white">
+    <!-- Navbar -->
+    <header class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+      <h1 class="text-2xl font-bold tracking-tight">Clarify<span class="text-blue-400">AI</span></h1>
+      <nav class="space-x-6 text-sm font-medium hidden md:flex">
+        <a href="#features" class="hover:text-blue-300">Features</a>
+        <a href="#demo" class="hover:text-blue-300">Demo</a>
+        <a href="#pricing" class="hover:text-blue-300">Pricing</a>
+        <a href="#contact" class="hover:text-blue-300">Contact</a>
+      </nav>
+      <a href="#" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm font-semibold shadow">Start Free</a>
+    </header>
+
     <!-- Hero -->
-    <section class="bg-gradient-to-r from-teal-100 to-cyan-100 text-center py-20 px-6">
-      <div class="max-w-3xl mx-auto">
-        <h1 class="text-5xl font-extrabold text-teal-800">
-          Clarify<span class="text-cyan-600">{AI}</span>
-        </h1>
-        <p class="mt-4 text-xl text-gray-700">
-          Fix Broken JSON Instantly with Smart AI Repair
+    <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-5xl font-extrabold leading-tight tracking-tight">
+          Smart <span class="text-blue-400">AI Repair</span>
+        </h2>
+        <p class="mt-6 text-lg text-gray-200 max-w-lg">
+          Fix broken JSON instantly with powerful heuristics + LLMs. Save dev time. Recover fast.
         </p>
-        <button class="mt-6 bg-teal-600 hover:bg-teal-700 text-white text-lg px-6 py-3 rounded-lg shadow-lg font-semibold transition">
-          Start Free – No Credit Card Needed
-        </button>
-      </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section class="max-w-4xl mx-auto bg-white p-8 mt-12 rounded-xl shadow">
-      <h2 class="text-2xl font-bold mb-4">Try ClarifyAI Now</h2>
-
-      <div class="flex items-center justify-between mb-4">
-        <label class="flex items-center gap-2 text-sm text-gray-600">
-          <input type="checkbox" v-model="isAuthMode" class="form-checkbox rounded">
-          Authenticated Mode
-        </label>
-        <input
-          v-if="isAuthMode"
-          v-model="apiKey"
-          type="password"
-          placeholder="Enter API Key"
-          class="border border-gray-300 rounded px-3 py-1 text-sm w-64"
-        />
-      </div>
-
-      <textarea
-        v-model="jsonInput"
-        placeholder="Paste your broken JSON here..."
-        class="w-full h-40 border border-gray-300 rounded-lg p-3 font-mono text-sm focus:ring-2 focus:ring-teal-500 resize-none"
-      ></textarea>
-
-      <div class="flex justify-between items-center mt-3">
-        <span class="text-sm text-gray-500">{{ jsonInput.length }} characters</span>
-        <button @click="repairJson" class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded font-medium">
-          {{ repairLoading ? 'Repairing...' : 'Repair JSON' }}
-        </button>
-      </div>
-
-      <div v-if="repairResult" class="bg-gray-50 mt-6 p-4 rounded-lg border border-teal-200">
-        <h3 class="text-sm font-semibold text-teal-600 mb-1">Repaired JSON</h3>
-        <pre class="overflow-x-auto text-sm font-mono">{{ repairResult }}</pre>
-        <div class="text-xs text-gray-500 mt-2" v-if="tier || credits">
-          <span v-if="tier">Tier: {{ tier }}</span>
-          <span v-if="credits"> • Remaining Credits: {{ credits }}</span>
+        <div class="mt-8 flex space-x-4">
+          <a href="#demo" class="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-lg text-sm font-semibold shadow">Try the Demo</a>
+          <a href="#pricing" class="border border-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-white hover:text-blue-900 transition">See Pricing</a>
         </div>
+        <p class="mt-4 text-sm text-gray-400">No credit card required. Loved by developers.</p>
       </div>
 
-      <div v-if="error" class="bg-red-100 mt-6 p-4 rounded-lg text-red-700">
-        {{ error }}
+      <!-- Screenshot or code panel -->
+      <div class="rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+        <img src="/src/assets/logoIteration2.png" alt="ClarifyAI screenshot" class="w-full h-auto object-cover" />
       </div>
-    </section>
+    </div>
 
     <!-- Features -->
-    <section class="max-w-6xl mx-auto px-6 py-20">
-      <div class="grid md:grid-cols-3 gap-8 text-center">
+    <section id="features" class="bg-blue-900 px-6 py-16 text-center">
+      <h3 class="text-3xl font-bold mb-10">Why Developers Use ClarifyAI</h3>
+      <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
         <div>
-          <h4 class="text-lg font-bold text-gray-900 mb-2">AI-Powered Precision</h4>
-          <p class="text-gray-600 text-sm">ClarifyAI uses heuristics and LLMs to correct broken JSON effortlessly.</p>
+          <h4 class="text-xl font-semibold mb-2">AI-Powered Precision</h4>
+          <p class="text-gray-300">Smart heuristics + LLMs fix broken JSON effortlessly.</p>
         </div>
         <div>
-          <h4 class="text-lg font-bold text-gray-900 mb-2">Save Dev Time</h4>
-          <p class="text-gray-600 text-sm">No more debugging malformed payloads. Focus on what matters.</p>
+          <h4 class="text-xl font-semibold mb-2">Save Dev Time</h4>
+          <p class="text-gray-300">Skip the manual debugging. ClarifyAI repairs your payloads instantly.</p>
         </div>
         <div>
-          <h4 class="text-lg font-bold text-gray-900 mb-2">Reliable for Teams</h4>
-          <p class="text-gray-600 text-sm">Loved by engineers who need fast, reliable JSON recovery.</p>
+          <h4 class="text-xl font-semibold mb-2">Reliable for Teams</h4>
+          <p class="text-gray-300">Fast, consistent output trusted by engineers worldwide.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- Demo CTA -->
+    <section id="demo" class="bg-gradient-to-r from-blue-800 to-blue-700 px-6 py-20 text-center">
+      <h3 class="text-3xl font-bold mb-6">Live JSON Repair Preview</h3>
+      <p class="text-gray-300 mb-10">See real-time results from ClarifyAI's repair engine</p>
+      <div class="max-w-4xl mx-auto bg-blue-950 p-6 rounded-xl shadow-md">
+        <p class="text-sm text-gray-400 mb-2">Example Input:</p>
+        <pre class="bg-blue-900 text-left p-4 rounded-md overflow-x-auto text-sm">{ "user": "Jane", "score": 98,, }</pre>
+        <p class="text-sm text-gray-400 mt-4 mb-2">ClarifyAI Output:</p>
+        <pre class="bg-blue-900 text-left p-4 rounded-md overflow-x-auto text-sm">{ "user": "Jane", "score": 98 }</pre>
       </div>
     </section>
 
     <!-- Pricing -->
-    <section class="bg-white py-16 border-t">
-      <div class="max-w-5xl mx-auto text-center px-4">
-        <h3 class="text-2xl font-bold text-gray-900 mb-8">Pricing Plans</h3>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="border rounded-lg p-6 shadow">
-            <h4 class="text-lg font-semibold">Free</h4>
-            <p class="text-gray-600 text-sm">10 repairs/day</p>
-          </div>
-          <div class="border-2 border-teal-600 rounded-lg p-6 shadow-lg">
-            <h4 class="text-lg font-semibold text-teal-600">Pro</h4>
-            <p class="text-gray-600 text-sm">1,000 repairs/month</p>
-          </div>
-          <div class="border rounded-lg p-6 shadow">
-            <h4 class="text-lg font-semibold">Enterprise</h4>
-            <p class="text-gray-600 text-sm">Custom usage & integrations</p>
-          </div>
+    <section id="pricing" class="bg-blue-900 px-6 py-20 text-center">
+      <h3 class="text-3xl font-bold mb-10">Pricing Plans</h3>
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-blue-800 p-6 rounded-xl border border-blue-700">
+          <h4 class="text-xl font-semibold mb-2">Free</h4>
+          <p class="text-gray-300 mb-4">10 repairs/day</p>
+          <p class="font-bold text-lg">$0</p>
+        </div>
+        <div class="bg-blue-800 p-6 rounded-xl border-2 border-blue-400 shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">Pro</h4>
+          <p class="text-gray-300 mb-4">1,000 repairs/month</p>
+          <p class="font-bold text-lg">$9/month</p>
+        </div>
+        <div class="bg-blue-800 p-6 rounded-xl border border-blue-700">
+          <h4 class="text-xl font-semibold mb-2">Enterprise</h4>
+          <p class="text-gray-300 mb-4">Custom usage & integrations</p>
+          <p class="font-bold text-lg">Contact Us</p>
         </div>
       </div>
     </section>
-  </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-950 px-6 py-10 text-center text-sm text-gray-500">
+      © 2025 ClarifyAI. Built with love by developers, for developers.
+    </footer>
+  </section>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-const jsonInput = ref('');
-const apiKey = ref('');
-const isAuthMode = ref(false);
-const repairResult = ref('');
-const error = ref('');
-const tier = ref('');
-const credits = ref('');
-const repairLoading = ref(false);
-
-const repairJson = async () => {
-  error.value = '';
-  repairResult.value = '';
-  tier.value = '';
-  credits.value = '';
-  repairLoading.value = true;
-
-  try {
-    if (!jsonInput.value) throw new Error('Please enter JSON to repair');
-    if (jsonInput.value.length > 10000) throw new Error('Input JSON is too long (max 10,000 characters)');
-    if (isAuthMode.value && !apiKey.value) throw new Error('API key is required in authenticated mode');
-
-    const url = isAuthMode.value ? 'http://localhost:8080/repair' : 'http://localhost:8080/repair/demo';
-    const headers = { 'Content-Type': 'application/json' };
-    if (isAuthMode.value) headers['X-API-Key'] = apiKey.value;
-
-    const response = await fetch(url, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ json: jsonInput.value })
-    });
-
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error || 'Repair failed');
-
-    repairResult.value = JSON.stringify(JSON.parse(result.repaired_json), null, 2);
-    if (result.tier) tier.value = result.tier;
-    if (result.remaining_credits !== undefined) credits.value = result.remaining_credits;
-  } catch (err) {
-    error.value = err.message;
-  } finally {
-    repairLoading.value = false;
-  }
-};
+// No interactivity here — handled elsewhere
 </script>
 
 <style scoped>
-pre {
-  white-space: pre-wrap;
-  word-break: break-word;
-}
+/* Optional custom styles */
 </style>
+
+
 
 
