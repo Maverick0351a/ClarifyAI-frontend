@@ -40,7 +40,7 @@
       <div class="flex items-center justify-between mt-4">
         <span class="text-sm text-gray-500">{{ jsonInput.length }} characters</span>
         <button @click="repairJson" class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-medium flex items-center space-x-2">
-          <img v-if="repairLoading" :src="logoUrl" alt="logo" class="h-5 w-5 animate-pulse" />
+          <img v-if="repairLoading" src="@/assets/logoIteration2.png" alt="ClarifyAI logo" class="h-5 w-5 animate-pulse" />
           <span>{{ repairLoading ? 'Repairing...' : 'Repair JSON' }}</span>
         </button>
       </div>
@@ -59,7 +59,7 @@
       </div>
     </section>
 
-    <!-- Features -->
+    <!-- Features & Testimonials -->
     <section class="max-w-6xl mx-auto px-6 py-20">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
@@ -71,3 +71,95 @@
         <div>
           <h4 class="text-lg font-bold text-gray-900 mb-2">
             Save Development Time
+          </h4>
+          <p class="text-gray-600">Stop wasting hours debugging malformed payloads. Let our API handle the mess.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold text-gray-900 mb-2">
+            Trusted by Devs
+          </h4>
+          <p class="text-gray-600">
+            “Saved me hours debugging malformed data.” – DevOps Lead @ MockCorp
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Preview -->
+    <section class="bg-white py-10 border-t">
+      <div class="max-w-4xl mx-auto text-center">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Plans & Pricing</h3>
+        <div class="grid md:grid-cols-3 gap-6 mt-6">
+          <div class="p-6 border rounded-lg">
+            <h4 class="text-lg font-semibold">Free</h4>
+            <p class="text-sm text-gray-600">10 repairs/day</p>
+          </div>
+          <div class="p-6 border-2 border-teal-600 rounded-lg shadow-lg">
+            <h4 class="text-lg font-semibold text-teal-600">Pro</h4>
+            <p class="text-sm text-gray-600">Up to 1,000 repairs/month</p>
+          </div>
+          <div class="p-6 border rounded-lg">
+            <h4 class="text-lg font-semibold">Enterprise</h4>
+            <p class="text-sm text-gray-600">Custom integrations & usage</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const jsonInput = ref('');
+const apiKey = ref('');
+const isAuthMode = ref(false);
+const repairResult = ref('');
+const error = ref('');
+const tier = ref('');
+const credits = ref('');
+const repairLoading = ref(false);
+
+const repairJson = async () => {
+  error.value = '';
+  repairResult.value = '';
+  tier.value = '';
+  credits.value = '';
+  repairLoading.value = true;
+
+  try {
+    if (!jsonInput.value) throw new Error('Please enter JSON to repair');
+    if (jsonInput.value.length > 10000) throw new Error('Input JSON is too long (max 10,000 characters)');
+    if (isAuthMode.value && !apiKey.value) throw new Error('API key is required in authenticated mode');
+
+    const url = isAuthMode.value ? 'http://localhost:8080/repair' : 'http://localhost:8080/repair/demo';
+    const headers = { 'Content-Type': 'application/json' };
+    if (isAuthMode.value) headers['X-API-Key'] = apiKey.value;
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ json: jsonInput.value })
+    });
+
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || 'Repair failed');
+
+    repairResult.value = JSON.stringify(JSON.parse(result.repaired_json), null, 2);
+    if (result.tier) tier.value = result.tier;
+    if (result.remaining_credits !== undefined) credits.value = result.remaining_credits;
+  } catch (err) {
+    error.value = err.message;
+  } finally {
+    repairLoading.value = false;
+  }
+};
+</script>
+
+<style scoped>
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+</style>
+
