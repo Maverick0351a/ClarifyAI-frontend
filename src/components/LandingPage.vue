@@ -40,7 +40,7 @@
       <div class="flex items-center justify-between mt-4">
         <span class="text-sm text-gray-500">{{ jsonInput.length }} characters</span>
         <button @click="repairJson" class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-medium flex items-center space-x-2">
-          <img v-if="repairLoading" :src="logoUrl" alt="logo" class="h-5 w-5 animate-pulse">
+          <img v-if="repairLoading" :src="logoUrl" alt="logo" class="h-5 w-5 animate-pulse" />
           <span>{{ repairLoading ? 'Repairing...' : 'Repair JSON' }}</span>
         </button>
       </div>
@@ -59,7 +59,7 @@
       </div>
     </section>
 
-    <!-- Features & Testimonials -->
+    <!-- Features -->
     <section class="max-w-6xl mx-auto px-6 py-20">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
@@ -71,25 +71,3 @@
         <div>
           <h4 class="text-lg font-bold text-gray-900 mb-2">
             Save Development Time
-          </h4>
-          <p class="text-gray-600">Stop wasting hours debugging malformed payloads. Let our API handle the mess.</p>
-        </div>
-        <div>
-          <h4 class="text-lg font-bold text-gray-900 mb-2">
-            Trusted by Devs
-          </h4>
-          <p class="text-gray-600">
-            “Saved me hours debugging malformed data.” – DevOps Lead @ MockCorp
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing Toggle Preview -->
-    <section class="bg-white py-10 border-t">
-      <div class="max-w-4xl mx-auto text-center">
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">Plans & Pricing</h3>
-        <div class="grid md:grid-cols-3 gap-6 mt-6">
-          <div class="p-6 border rounded-lg">
-            <h4 class="text-lg font-semibo
-
