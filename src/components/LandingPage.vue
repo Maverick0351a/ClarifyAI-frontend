@@ -2,11 +2,11 @@
   <div class="bg-gray-50 min-h-screen">
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-teal-100 to-cyan-100 py-16 px-6 text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-        Fix Broken JSON in Seconds
+      <h1 class="text-5xl font-extrabold text-teal-800 tracking-tight mb-2">
+        Clarify<span class="text-cyan-600">{AI}</span>
       </h1>
       <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-6">
-        Let AI clean your data while you build. Try ClarifyAI for free.
+        Fix Broken JSON Instantly with Smart AI Repair
       </p>
       <button class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-3 rounded-lg transition">
         Start Free – No Credit Card Needed
@@ -39,9 +39,8 @@
 
       <div class="flex items-center justify-between mt-4">
         <span class="text-sm text-gray-500">{{ jsonInput.length }} characters</span>
-        <button @click="repairJson" class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-medium flex items-center space-x-2">
-          <img v-if="repairLoading" src="@/assets/logoIteration2.png" alt="ClarifyAI logo" class="h-5 w-5 animate-pulse" />
-          <span>{{ repairLoading ? 'Repairing...' : 'Repair JSON' }}</span>
+        <button @click="repairJson" class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-medium">
+          {{ repairLoading ? 'Repairing...' : 'Repair JSON' }}
         </button>
       </div>
 
@@ -66,29 +65,27 @@
           <h4 class="text-lg font-bold text-gray-900 mb-2">
             AI-Powered Precision
           </h4>
-          <p class="text-gray-600">ClarifyAI automatically corrects broken JSON formats using heuristics and large language models.</p>
+          <p class="text-gray-600">ClarifyAI uses heuristics and LLMs to correct broken JSON effortlessly.</p>
         </div>
         <div>
           <h4 class="text-lg font-bold text-gray-900 mb-2">
-            Save Development Time
+            Save Dev Time
           </h4>
-          <p class="text-gray-600">Stop wasting hours debugging malformed payloads. Let our API handle the mess.</p>
+          <p class="text-gray-600">No more debugging malformed payloads. Focus on what matters.</p>
         </div>
         <div>
           <h4 class="text-lg font-bold text-gray-900 mb-2">
-            Trusted by Devs
+            Reliable for Teams
           </h4>
-          <p class="text-gray-600">
-            “Saved me hours debugging malformed data.” – DevOps Lead @ MockCorp
-          </p>
+          <p class="text-gray-600">Loved by engineers who need fast, reliable JSON recovery.</p>
         </div>
       </div>
     </section>
 
-    <!-- Pricing Preview -->
+    <!-- Pricing Section -->
     <section class="bg-white py-10 border-t">
       <div class="max-w-4xl mx-auto text-center">
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">Plans & Pricing</h3>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Pricing Plans</h3>
         <div class="grid md:grid-cols-3 gap-6 mt-6">
           <div class="p-6 border rounded-lg">
             <h4 class="text-lg font-semibold">Free</h4>
@@ -96,11 +93,11 @@
           </div>
           <div class="p-6 border-2 border-teal-600 rounded-lg shadow-lg">
             <h4 class="text-lg font-semibold text-teal-600">Pro</h4>
-            <p class="text-sm text-gray-600">Up to 1,000 repairs/month</p>
+            <p class="text-sm text-gray-600">1,000 repairs/month</p>
           </div>
           <div class="p-6 border rounded-lg">
             <h4 class="text-lg font-semibold">Enterprise</h4>
-            <p class="text-sm text-gray-600">Custom integrations & usage</p>
+            <p class="text-sm text-gray-600">Custom usage & integrations</p>
           </div>
         </div>
       </div>
@@ -162,4 +159,5 @@ pre {
   word-break: break-word;
 }
 </style>
+
 
